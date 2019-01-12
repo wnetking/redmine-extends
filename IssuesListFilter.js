@@ -107,7 +107,6 @@ class IssuesListFilter {
 
       const matchParamsArray = paramsWithoutShowAll.map(item => {
         const param = $issue.find("." + item.name).html();
-        console.log("param", param, $issue.find("." + item.name));
 
         return param !== item.value;
       });
