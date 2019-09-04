@@ -1,0 +1,44 @@
+{
+  "name": "Wnetking Magic",
+  "description": "Магия, которая должна упростить жизнь разработчиков работая с Redmine, Gitlab.",
+  "version": "0.0.1",
+  "manifest_version": 2,
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "icons": {
+    "128": "icon_128.png"
+  },
+
+  "options_page": "options.html",
+
+  "browser_action": {
+    "default_title": "Wnetking Magic"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["contentscript.js"],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ],
+  "permissions": [
+    "storage",
+    "unlimitedStorage",
+    "clipboardWrite",
+    "idle",
+    "webRequest",
+    "notifications",
+    "contextMenus",
+    "management",
+    "tabs",
+    "storage",
+    "activeTab",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "web_accessible_resources": ["inpage.js", "inject.css", "contentscript.js"]
+}
