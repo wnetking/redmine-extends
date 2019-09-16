@@ -1,1 +1,1 @@
-## [Gzip Magic](/wnetking/redmine-extends/raw/master/magic.zip)
+## [Gzip Magic](https://github.com/wnetking/redmine-extends/raw/master/magic.zip)
