@@ -23,6 +23,7 @@ async function setupInpageApi() {
   global.App = pageApi;
 
   const settings = await pageApi.getSettings();
+
   const modifier = new PageModifier(settings);
 
   modifier.run();

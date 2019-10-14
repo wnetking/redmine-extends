@@ -10,7 +10,7 @@ setupUi().catch(console.error);
 
 async function setupUi() {
   // Подключаемся к порту, создаем из него стрим
-  const backgroundPort = extensionApi.runtime.connect({ name: 'popup' });
+  const backgroundPort = extensionApi.runtime.connect({ name: 'options' });
   const connectionStream = new PortStream(backgroundPort);
 
   // Создаем пустой observable для состояния background'a
