@@ -4,6 +4,10 @@ $('body').append(`
 	margin-right: 0 ;
 }
 
+img{
+  cursor: pointer;
+}
+
 .content-with-both-side{
   display: flex;
 }
@@ -45,6 +49,7 @@ html>body #content {
 }
 
 #photo-handler-wrap {
+  z-index: 100;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -65,7 +70,8 @@ html>body #content {
   background-repeat: no-repeat;
 }
 
-#photo-handler-wrap img{
+#photo-handler-wrap img, #photo-handler-wrap video{
+  max-height: 100%;
   max-width: 100%;
   width: 100%;
 }

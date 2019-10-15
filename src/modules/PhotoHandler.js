@@ -4,17 +4,40 @@ class PhotoHandler {
   setTemplate() {
     $('body').append(`
       <div id="photo-handler-wrap" style="display:none;">
-        <img alt="photo-handler-wrap" src="" data-image-hover=""/>
-        <button class="link-btn close-photo-handler-wrap">x</button>
-        <div id="overlay" class="zoomImage"></div>
       </div>
     `);
   }
 
-  setImgSrc(src) {
-    $('#photo-handler-wrap img')
-      .attr('src', src)
-      .attr('data-image-hover', src);
+  getImgTemplate(src) {
+    return `
+      <img alt="photo-handler-wrap" src="${src}" data-image-hover="${src}"/>
+      <button class="link-btn close-photo-handler-wrap">x</button>
+      <div id="overlay" class="zoomImage"></div>
+    `;
+  }
+
+  getVideoTemplate(src) {
+    return `
+    <video src="${src}" autoplay controls poster="https://serpstat.com/img/serpstat_wallpaper.jpg">
+      Sorry, your browser doesn't support embedded videos, 
+      but don't worry, you can <a href="videofile.ogg">download it</a>
+      and watch it with your favorite video player!
+    </video>
+    <button class="link-btn close-photo-handler-wrap">x</button>
+    <div id="overlay" class="zoomImage"></div>
+    `;
+  }
+
+  getTemplateByStrategy(src) {
+    if (src.includes('.mp4')) {
+      return this.getVideoTemplate(src);
+    } else {
+      return this.getImgTemplate(src);
+    }
+  }
+
+  setModalTemplate(src) {
+    $('#photo-handler-wrap').html(this.getTemplateByStrategy(src));
   }
 
   show() {
@@ -56,34 +79,37 @@ class PhotoHandler {
     $item.append(this.getButtonTpl(src));
   };
 
-  openModalWithImg = e => {
+  getSrc = target => {
+    const nodeName = target.nodeName;
+
+    if (nodeName === 'IMG') {
+      return $(target).attr('src');
+    } else {
+      return $(target).attr('data-src');
+    }
+  };
+
+  openModal = e => {
     e.preventDefault();
     e.stopPropagation();
 
-    const imgSrc = $(e.target).attr('data-src');
-    this.setImgSrc(imgSrc);
+    const imgSrc = this.getSrc(e.target);
+    this.setModalTemplate(imgSrc);
     this.show();
   };
 
   init() {
     this.setTemplate();
     this.element = document.getElementById('overlay');
-    $('[href$=".png"]')
+    $(
+      '[href$=".png"], [href$=".jpg"], [href$=".gif"], [href$=".jpeg"], [href$=".mp4"]'
+    )
       .attr('target', '_blank')
       .each(this.setButtonTmp);
 
-    $('body').on('click', '.in-modal-btn', this.openModalWithImg);
+    $('body').on('click', '.in-modal-btn', this.openModal);
+    $('body').on('click', 'img', this.openModal);
     $('body').on('click', '.close-photo-handler-wrap', this.hide);
-
-    // document.body.addEventListener('mousemove', e => {
-    //   if (e.target.getAttribute('data-image-hover') === null) return;
-    //   this.hoverImage.apply(e.target, [e]);
-    // });
-
-    // document.body.addEventListener('mouseout', e => {
-    //   if (e.target.getAttribute('data-image-hover') === null) return;
-    //   this.mouseOut.apply(e.target, [e]);
-    // });
   }
 }
 
