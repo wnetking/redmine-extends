@@ -11,6 +11,7 @@ class Store {
     this.showUserPhoto = observable.box(showUserPhoto || true);
     this.enablePhotoHandler = observable.box(enablePhotoHandler || true);
     this.menu = observable([...menu]);
+    this.apiKey = ''
   }
 }
 

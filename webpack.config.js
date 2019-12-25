@@ -1,6 +1,9 @@
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
+
 const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = () => {
@@ -21,6 +24,7 @@ module.exports = () => {
   plugins.push(new CopyWebpackPlugin(COPY));
 
   if (isProduction) {
+    // plugins.push(new BundleAnalyzerPlugin({ analyzerPort: 4000 }));
   }
 
   return {

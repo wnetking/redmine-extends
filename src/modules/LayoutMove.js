@@ -5,7 +5,11 @@
  */
 
 class LayoutMove {
-  static historyInRightSide() {
+  constructor() {
+
+  }
+
+  historyInRightSide() {
     const $body = $('.controller-issues.action-show');
     const $content = $body.find('#content');
     const $history = $body.find('#history').detach();
@@ -18,42 +22,55 @@ class LayoutMove {
     $content.addClass('content-with-both-side');
   }
 
-  static selectWithSearch() {
+  selectWithSearch() {
     const $toggleMultiSelect = $('.toggle-multiselect');
     const $selectAssigned = $toggleMultiSelect.parent().find('select');
 
-    $selectAssigned.select2();
-
-    $toggleMultiSelect.on('click', () => {
-      $selectAssigned.select2('destroy');
-
-      setTimeout(function() {
+    if (!$selectAssigned.hasClass('.select2-hidden-accessible')) {
+      setTimeout(() => {
         $selectAssigned.select2();
-      }, 0.1);
-    });
+
+        $toggleMultiSelect.on('click', () => {
+          $selectAssigned.select2('destroy');
+
+          setTimeout(() => {
+            $selectAssigned.select2();
+          }, 0.1);
+        });
+      }, 50)
+    }
   }
 
-  static dynamicEditSelect2() {
+  dynamicEditSelect2() {
     const className = '.dynamicEdit select';
 
-    $(className).select2();
+    if (!$(className).hasClass('.select2-hidden-accessible')) {
+      $(className).select2();
+    }
   }
 
-  static init() {
-    LayoutMove.historyInRightSide();
-    LayoutMove.dynamicEditSelect2();
+  _descriptionTableOverflow() {
+    const selector = '.controller-issues .issue .description table';
+    $(selector).wrap('<div class="magic-table">')
+  }
+
+  init() {
+    this.historyInRightSide();
+    this.dynamicEditSelect2();
+    this._descriptionTableOverflow();
 
     $(() => {
-      LayoutMove.selectWithSearch();
+      this.selectWithSearch();
     });
 
     $('#add_filter_select').on('change', () => {
-      console.log('#add_filter_select');
-      setTimeout(function() {
-        LayoutMove.selectWithSearch();
+      setTimeout(() => {
+        this.selectWithSearch();
       }, 0.1);
+
     });
   }
 }
 
-export default LayoutMove;
+const layoutMove = new LayoutMove();
+export default layoutMove;

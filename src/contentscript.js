@@ -1,7 +1,6 @@
 import { extensionApi } from './utils/extensionApi';
 import { PortStream } from './utils/PortStream';
 import PostMessageStream from 'post-message-stream';
-
 const hosts = ['redmine.netpeak.net'];
 const isAnable = hosts.includes(document.location.hostname);
 
@@ -9,6 +8,8 @@ if (isAnable) {
   setupConnection();
   injectScript();
 }
+
+console.log('Test')
 
 function setupConnection() {
   const backgroundPort = extensionApi.runtime.connect({

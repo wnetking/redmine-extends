@@ -41,3 +41,102 @@ html>body #content {
   background: white;
   bottom: 0;
 }
+
+#main.nosidebar #content{
+	margin-right: 0 ;
+}
+
+img{
+  cursor: pointer;
+}
+
+.content-with-both-side{
+  display: flex;
+}
+
+.left-side-content{
+  position: relative;
+  flex-basis: 65%;
+  max-width: 65%;
+}
+
+.right-side-content{
+  flex-basis: 35%;
+  max-width: 35%;
+  padding: 10px;
+  background-color: #fafafa;
+  margin-top: -15px;
+  margin-right: -10px;
+  margin-bottom: -10px;
+  margin-left: 10px;
+  border-left: 1px solid #ddd
+}
+
+div#issue-changesets{
+  width: 100%;  
+}
+
+html>body #content {
+    min-height: 100vh;
+}
+
+.controller-issues #update {
+  position: absolute;
+  overflow-y: auto;
+  width: 100%;
+  max-height: 100%;
+  top: 0;
+  background: white;
+  bottom: 0;
+}
+
+#photo-handler-wrap {
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+.zoomImage {
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  background-repeat: no-repeat;
+}
+
+#photo-handler-wrap img, #photo-handler-wrap video{
+  max-height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+#photo-handler-wrap .close-photo-handler-wrap{
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  font-size: 20px;
+  color: #000;
+  min-width: 50px;
+}
+.link-btn{
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.in-modal-btn {
+  margin-left: 10px;
+  min-height: 16px;
+}
+
+.select2-container--default {
+  min-width: 150px;
+}

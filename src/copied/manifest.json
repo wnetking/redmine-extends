@@ -1,44 +1,47 @@
 {
   "name": "Wnetking Magic",
-  "description": "Магия, которая должна упростить жизнь разработчиков работая с Redmine, Gitlab.",
-  "version": "0.0.1",
+  "description": "__MSG_extDescription__",
+  "version": "1.0.0",
+  "author": "Wnetking <wnetking1@gmail.com>",
   "manifest_version": 2,
-
   "background": {
-    "scripts": ["background.js"]
+    "scripts": [
+      "background.js"
+    ]
   },
-
   "icons": {
     "128": "icon_128.png"
   },
-
   "options_page": "options.html",
-
   "browser_action": {
     "default_title": "Wnetking Magic"
   },
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*"],
-      "js": ["contentscript.js"],
+      "matches": [
+        "https://redmine.netpeak.net/*"
+      ],
+      "js": [
+        "contentscript.js"
+      ],
       "run_at": "document_end",
       "all_frames": true
     }
   ],
+  "externally_connectable": {
+    "matches": [
+      "https://redmine.netpeak.net/*"
+    ]
+  },
   "permissions": [
-    "storage",
-    "unlimitedStorage",
-    "clipboardWrite",
     "idle",
-    "webRequest",
-    "notifications",
     "contextMenus",
-    "management",
-    "tabs",
     "storage",
-    "activeTab",
-    "http://*/*",
-    "https://*/*"
+    "activeTab"
   ],
-  "web_accessible_resources": ["inpage.js", "inject.css", "contentscript.js"]
+  "web_accessible_resources": [
+    "inpage.js",
+    "inject.css",
+    "contentscript.js"
+  ]
 }

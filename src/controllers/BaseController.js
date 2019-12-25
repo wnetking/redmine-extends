@@ -13,6 +13,14 @@ export default class BaseController {
     }
   }
 
+  @action setValue(key, value) {
+    const store = this.store;
+
+    if (typeof store[key] !== 'undefined') {
+      store[key] = value;
+    }
+  }
+
   @action getStore() {
     const store = JSON.stringify(this.store);
 
@@ -22,13 +30,15 @@ export default class BaseController {
   popupApi() {
     return {
       getSettings: async () => this.getStore(),
-      toggleStoreValue: async (key, value) => this.toggleStoreValue(key, value)
+      toggleStoreValue: async (key, value) => this.toggleStoreValue(key, value),
+      setValue: async (key, value) => this.setValue(key, value)
     };
   }
 
   pageApi() {
     return {
-      getSettings: async () => this.getStore()
+      getSettings: async () => this.getStore(),
+      setValue: async (key, value) => this.setValue(key, value)
     };
   }
 }

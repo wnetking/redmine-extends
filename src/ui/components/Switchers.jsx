@@ -6,6 +6,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Switch from '@material-ui/core/Switch';
 import CustomMenu from './CustomMenu';
+import TokenInput from './TokenInput';
 
 export default function Switchees({
   toggleStoreValue,
@@ -13,7 +14,8 @@ export default function Switchees({
   updateItemMenu,
   removeItemMenu,
   updateStore,
-  addItemMenu
+  addItemMenu,
+  setValue
 }) {
   const [state, setState] = React.useState({
     anableLayoutMove: store.anableLayoutMove,
@@ -73,6 +75,7 @@ export default function Switchees({
         updateStore={updateStore}
         addItemMenu={addItemMenu}
       />
+      <TokenInput setValue={setValue} store={store} />
     </FormControl>
   );
 }

@@ -84,6 +84,7 @@ html>body #content {
   font-size: 20px;
   color: #000;
   min-width: 50px;
+  background-color: #fff;
 }
 .link-btn{
   background-color: transparent;
@@ -93,6 +94,22 @@ html>body #content {
 .in-modal-btn {
   margin-left: 10px;
   min-height: 16px;
+}
+.select2-container--default {
+  min-width: 150px;
+}
+.select2-search__field{
+  min-width: 50px;
+}
+.magic-table:not(:hover){
+  overflow: hidden;
+  max-width: 100%;
+  width: 100%;
+}
+
+.magic-table table {
+  background-color: #ffffdd;
+  margin-bottom: 0 !important;
 }
 </style>
 `);

@@ -34,7 +34,8 @@ export default class App extends Component {
       toggleStoreValue,
       updateItemMenu,
       removeItemMenu,
-      addItemMenu
+      addItemMenu,
+      setValue
     } = this.props.background;
     const { store } = this.state;
 
@@ -60,6 +61,7 @@ export default class App extends Component {
             removeItemMenu={removeItemMenu}
             addItemMenu={addItemMenu}
             updateStore={this.updateStore}
+            setValue={setValue}
           />
         </Container>
       </React.Fragment>
