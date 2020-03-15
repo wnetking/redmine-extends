@@ -31,6 +31,7 @@ export default function BasicTextFields({ setValue, store }) {
         label="Ключь Redmine API"
         helperText="Сможете найти: My account --> API access key (Левый сайдбар)"
         value={value}
+        type="password"
         onChange={onChange}
         onBlur={handleChange} />
     </div>
