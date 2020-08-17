@@ -1,7 +1,7 @@
 import { extensionApi } from './utils/extensionApi';
 import { PortStream } from './utils/PortStream';
 import PostMessageStream from 'post-message-stream';
-const hosts = ['redmine.netpeak.net'];
+const hosts = ['redmine.netpeak.net', 'redmine.serpstat.com'];
 const isAnable = hosts.includes(document.location.hostname);
 
 if (isAnable) {

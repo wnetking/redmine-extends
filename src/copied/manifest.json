@@ -19,7 +19,8 @@
   "content_scripts": [
     {
       "matches": [
-        "https://redmine.netpeak.net/*"
+        "https://redmine.netpeak.net/*",
+        "https://redmine.serpstat.com/*"
       ],
       "js": [
         "contentscript.js"
@@ -33,7 +34,8 @@
   ],
   "externally_connectable": {
     "matches": [
-      "https://redmine.netpeak.net/*"
+      "https://redmine.netpeak.net/*",
+      "https://redmine.serpstat.com/*"
     ]
   },
   "permissions": [

@@ -27,7 +27,7 @@ function request(params) {
 class Redmine {
   constructor(key) {
     this.apiKey = key;
-    this.baseUrl = 'https://redmine.netpeak.net'
+    this.baseUrl = 'https://redmine.serpstat.com'
   }
 
   _request(path, opts) {
