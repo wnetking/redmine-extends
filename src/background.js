@@ -28,29 +28,11 @@ function setupApp() {
   }
 
   reaction(() => toJS(store), saveState);
-
-  // update badge
-  // reaction(
-  //   () =>
-  //     app.store.newMessages.length > 0
-  //       ? app.store.newMessages.length.toString()
-  //       : '',
-  //   text => extensionApi.browserAction.setBadgeText({ text }),
-  //   { fireImmediately: true }
-  // );
-
-  // Lock on idle
+  
   extensionApi.idle.setDetectionInterval(IDLE_INTERVAL);
-  // extensionApi.idle.onStateChanged.addListener(state => {
-  //   if (['locked', 'idle'].indexOf(state) > -1) {
-  //     // app.lock();
-  //   }
-  // });
 
   // Connect to other contexts
-  extensionApi.runtime.onConnect.addListener(connectRemote);
-
-  function connectRemote(remotePort) {
+  extensionApi.runtime.onConnect.addListener(function connectRemote(remotePort) {
     const processName = remotePort.name;
     const portStream = new PortStream(remotePort);
 
@@ -60,5 +42,5 @@ function setupApp() {
     } else {
       app.connectPopup(portStream);
     }
-  }
+  });
 }

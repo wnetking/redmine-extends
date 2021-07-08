@@ -1,15 +1,8 @@
 import PostMessageStream from 'post-message-stream';
 import { cbToPromise, setupDnode, transformMethods } from './utils/setupDnode';
-import PageModifier from './modules/PageModifier';
-import AgileBoard from './modules/AgileBoard';
-import Redmine from './modules/Redmine';
-import './modules/IssueCard';
-import './modules/BoardToolbar';
-import './modules/setStyles';
+import modulesRegister from './modules/modulesRegister';
 
 setupInpageApi().catch(console.error);
-
-
 
 async function setupInpageApi() {
   const connectionStream = new PostMessageStream({
@@ -17,8 +10,7 @@ async function setupInpageApi() {
     target: 'content'
   });
 
-  const api = {};
-  const dnode = setupDnode(connectionStream, api);
+  const dnode = setupDnode(connectionStream, {});
 
   const pageApi = await new Promise(resolve => {
     dnode.once('remote', remoteApi => {
@@ -30,19 +22,13 @@ async function setupInpageApi() {
 
   const settings = await pageApi.getSettings();
 
-  const modifier = new PageModifier(settings);
-
-  const redmineApiKey = settings.apiKey;
-
-  if (redmineApiKey) {
-    const redmine = new Redmine(redmineApiKey);
-
-    if (document.body.classList.contains('controller-agile_boards')) {
-      const board = new AgileBoard(redmine)
-
-      board.init()
+  modulesRegister.forEach(Module => {
+    try {
+      const module = new Module(settings);
+      
+      module.run();
+    } catch (error) {
+      console.error(error);
     }
-  }
-
-  modifier.run();
+  });
 }

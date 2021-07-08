@@ -34,7 +34,7 @@ export default function Switchees({
         <FormControlLabel
           control={
             <Switch
-              checked={state.anableLayoutMove}
+              checked={Boolean(state.anableLayoutMove)}
               color="primary"
               onChange={handleChange('anableLayoutMove')}
               value="anableLayoutMove"
@@ -45,7 +45,7 @@ export default function Switchees({
         <FormControlLabel
           control={
             <Switch
-              checked={state.showUserPhoto}
+              checked={Boolean(state.showUserPhoto)}
               onChange={handleChange('showUserPhoto')}
               value="showUserPhoto"
               color="primary"
@@ -56,7 +56,7 @@ export default function Switchees({
         <FormControlLabel
           control={
             <Switch
-              checked={state.enablePhotoHandler}
+              checked={Boolean(state.enablePhotoHandler)}
               onChange={handleChange('enablePhotoHandler')}
               value="enablePhotoHandler"
               color="primary"

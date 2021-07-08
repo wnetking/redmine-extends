@@ -1,10 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { observer } from 'mobx-react';
-import Init from './components/Initialize';
-import Keys from './components/Keys';
-import Sign from './components/Sign';
-import Unlock from './components/Unlock';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Switchees from './components/Switchers';
@@ -45,7 +40,6 @@ export default class App extends Component {
 
     return (
       <React.Fragment>
-        <CssBaseline />
         <Container maxWidth="sm">
           <Typography
             variant="h3"

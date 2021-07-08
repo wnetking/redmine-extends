@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
 export default function BasicTextFields({ setValue, store }) {
   const classes = useStyles();
   const apiKey = store.apiKey;
-  const [value, setState] = React.useState(apiKey);
+  const [value, setState] = React.useState(apiKey.value);
   const handleChange = event => {
     if (value.length === 40) {
       setValue('apiKey', value);
@@ -24,6 +24,8 @@ export default function BasicTextFields({ setValue, store }) {
   const onChange = (event) => {
     setState(event.target.value);
   }
+
+  console.log(apiKey);
 
   return (
     <div className={classes.root}>
