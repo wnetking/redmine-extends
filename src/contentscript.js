@@ -2,7 +2,10 @@ import { extensionApi } from './utils/extensionApi';
 import { PortStream } from './utils/PortStream';
 import PostMessageStream from 'post-message-stream';
 
-if (document.querySelector('meta[name="description"]').getAttribute('content') === 'Redmine') {
+const descMetaElement = document
+  .querySelector('meta[name="description"]')
+
+if (descMetaElement && descMetaElement.getAttribute('content') === 'Redmine') {
   const backgroundPort = extensionApi.runtime.connect({
     name: 'contentscript'
   });

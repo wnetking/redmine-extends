@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack --watch",
-    "dist": "NODE_ENV=production webpack && node zip.js"
+    "dist": "NODE_ENV=production webpack && node zip.js",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -17,9 +18,11 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
     "@types/react": "^16.7.20",
+    "babel-jest": "^27.0.6",
     "babel-loader": "^8.0.4",
     "copy-webpack-plugin": "^4.6.0",
     "filesize": "^5.0.3",
+    "jest": "^27.0.6",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.1.2",
     "zip-dir": "^1.0.2"

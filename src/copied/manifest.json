@@ -1,7 +1,7 @@
 {
   "name": "Redmine Extends",
   "description": "Small magic for redmine base on API token",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "author": "Wnetking <wnetking1@gmail.com>",
   "manifest_version": 2,
   "background": {
