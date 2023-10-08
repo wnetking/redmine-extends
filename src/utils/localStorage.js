@@ -1,20 +1,15 @@
-export const loadState = () => {
-  try {
-    const state = JSON.parse(localStorage.getItem('store'));
-    return state || undefined;
-  } catch (error) {
-    console.log(error);
-    return undefined;
-  }
-};
-export const saveMenu = items => {
-  localStorage.setItem('_menu', JSON.stringify(items));
+const localStorage = {
+  getAllItems: () => chrome.storage.local.get(),
+  getItem: async key => (await chrome.storage.local.get(key))[key],
+  setItem: (key, val) => chrome.storage.local.set({[key]: val}),
+  removeItems: keys => chrome.storage.local.remove(keys),
 };
 
-export const getMenu = () => {
+export const loadState = async () => {
   try {
-    const state = JSON.parse(localStorage.getItem('_menu'));
-    return state || undefined;
+    const state = await localStorage.getItem('store');
+
+    return state ? JSON.parse(state) : undefined;
   } catch (error) {
     console.log(error);
     return undefined;

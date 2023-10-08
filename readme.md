@@ -11,3 +11,6 @@
 4. Click `Load unpacked`
 
 5. Select folder with files from unzipped file
+
+
+https://www.freecodecamp.org/news/content/images/2021/02/flowchart.png
