@@ -19,7 +19,7 @@ export default function BasicTextFields({ setValue, store }) {
   
   const handleChange = () => {
     if (value.length === 40) {
-      setValue('apiKey', value);
+      setValue({ key: 'apiKey', value });
     } else if(value.length > 0) {
       setOpenError(true);
     }

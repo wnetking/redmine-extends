@@ -74,4 +74,4 @@ const DEV_MODE = process.env.NODE_ENV !== 'production';
     .runtime
     .onMessage
     .addListener(onMessage);
-})()
+})();

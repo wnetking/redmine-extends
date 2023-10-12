@@ -16,7 +16,7 @@ export default class BaseController {
   }
 
    
-  @action setValue(key, value) {
+  @action setValue({ key, value }) {
      
     const store = this.store;
 
