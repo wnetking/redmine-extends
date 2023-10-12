@@ -5,31 +5,14 @@ import Redmine from './modules/Redmine';
 import './modules/IssueCard';
 import './modules/BoardToolbar';
 import './modules/setStyles';
-import { Request, Response } from '../types';
-import { API } from '../services/api'
 
 const script = document
   .getElementById('inpage_magic_script');
-const extId = script ?
-  script.getAttribute('data-ext-id') : null;
-
-/**
- * @type {(request: Request) => Promise<Response>}
- */
-const sendMessage = (request) => new Promise((resolve, reject) => {
-  // @ts-ignore
-  chrome.runtime.sendMessage(extId, request, (response) => {
-    resolve(response);
-  });
-});
-
-const api = new API(sendMessage);
+const settingsJSON = script ?
+  script.getAttribute('data-settings') : null;
 
 async function setupInpageApi() {
-  const {
-    result: settings
-  } = await api.fetch({ method: 'getSettings' });
-
+  const settings = JSON.parse(settingsJSON || '{}');
   const modifier = new PageModifier(settings);
 
   const redmineApiKey = settings.apiKey;
@@ -47,4 +30,6 @@ async function setupInpageApi() {
   modifier.run();
 }
 
-setupInpageApi().catch(console.error);
+document.addEventListener("DOMContentLoaded", () => {
+  setupInpageApi().catch(console.error);
+});
