@@ -6,6 +6,7 @@
 
 /**
  * @typedef Request
+ * @property {string} [id]
  * @property {string} method
  * @property {Record<string, any>} [params]
  */
@@ -18,6 +19,7 @@ export const Request = {};
 
 /**
  * @typedef Response
+ * @property {string} [id]
  * @property {any} [result]
  * @property {Error} [error]
  */

@@ -1,16 +1,28 @@
-import { extensionApi } from '../utils/extensionApi';
 import { Request, Response } from '../types';
 import { API } from '../services/api';
 
 /**
  * @type {(request: Request) => Promise<Response>}
  */
-const sendMessage = async (request) => {
-  // @ts-ignore
-  const response = await chrome.runtime.sendMessage(request);
+const sendMessage = (request) => new Promise((resolve, reject) => {
+  var port = chrome.runtime.connect({ name: "main-port" });
+  port.postMessage(request);
 
-  return response;
-};
+  port.onMessage.addListener(
+    /**
+     * @param {Response} response
+     */
+    (response) => {
+      if (request.id === response.id) {
+        if(response.error) {
+          reject(response)
+        } else {
+          resolve(response);
+        }
+      }
+    }
+  );
+});
 
 const api = new API(sendMessage);
 
@@ -19,13 +31,13 @@ const isAnable = hosts.includes(document.location.hostname);
 
 if (isAnable) {
   (async () => {
-    const {
-      result: settings
-    } = await api.fetch({ method: 'getSettings' });
-
     try {
+      const {
+        result: settings
+      } = await api.fetch({ method: 'getSettings' });
+
       let script = document.createElement('script');
-      script.src = extensionApi.runtime.getURL('inpage.js');
+      script.src = chrome.runtime.getURL('inpage.js');
       script.id = 'inpage_magic_script';
       script.setAttribute('data-settings', JSON.stringify(settings));
       const container = document.head || document.documentElement;

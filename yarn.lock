@@ -900,6 +900,14 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@types/chrome@^0.0.246":
+  version "0.0.246"
+  resolved "https://registry.yarnpkg.com/@types/chrome/-/chrome-0.0.246.tgz#412ee1b162a67d1cfebe413887b9aa0c28998ef1"
+  integrity sha512-MxGxEomGxsJiL9xe/7ZwVgwdn8XVKWbPvxpVQl3nWOjrS0Ce63JsfzxUc4aU3GvRcUPYsfufHmJ17BFyKxeA4g==
+  dependencies:
+    "@types/filesystem" "*"
+    "@types/har-format" "*"
+
 "@types/eslint-scope@^3.7.3":
   version "3.7.5"
   resolved "https://registry.yarnpkg.com/@types/eslint-scope/-/eslint-scope-3.7.5.tgz#e28b09dbb1d9d35fdfa8a884225f00440dfc5a3e"
@@ -920,6 +928,23 @@
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-1.0.2.tgz#ff02bc3dc8317cd668dfec247b750ba1f1d62453"
   integrity sha512-VeiPZ9MMwXjO32/Xu7+OwflfmeoRwkE/qzndw42gGtgJwZopBnzy2gD//NN1+go1mADzkDcqf/KnFRSjTJ8xJA==
+
+"@types/filesystem@*":
+  version "0.0.33"
+  resolved "https://registry.yarnpkg.com/@types/filesystem/-/filesystem-0.0.33.tgz#808e0048221426b30341a6b19a8193213c72ca55"
+  integrity sha512-2KedRPzwu2K528vFkoXnnWdsG0MtUwPjuA7pRy4vKxlxHEe8qUDZibYHXJKZZr2Cl/ELdCWYqyb/MKwsUuzBWw==
+  dependencies:
+    "@types/filewriter" "*"
+
+"@types/filewriter@*":
+  version "0.0.30"
+  resolved "https://registry.yarnpkg.com/@types/filewriter/-/filewriter-0.0.30.tgz#1be7733877589d57c653b8356cefe5fe7c74b89e"
+  integrity sha512-lB98tui0uxc7erbj0serZfJlHKLNJHwBltPnbmO1WRpL5T325GOHRiQfr2E29V2q+S1brDO63Fpdt6vb3bES9Q==
+
+"@types/har-format@*":
+  version "1.2.13"
+  resolved "https://registry.yarnpkg.com/@types/har-format/-/har-format-1.2.13.tgz#7ef32562d433166e1ad14e3eb6fcf5c00c8a0ead"
+  integrity sha512-PwBsCBD3lDODn4xpje3Y1di0aDJp4Ww7aSfMRVw6ysnxD4I7Wmq2mBkSKaDtN403hqH5sp6c9xQUvFYY3+lkBg==
 
 "@types/json-schema@*", "@types/json-schema@^7.0.8", "@types/json-schema@^7.0.9":
   version "7.0.13"

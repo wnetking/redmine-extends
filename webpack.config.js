@@ -12,6 +12,7 @@ module.exports = () => {
     entry: {
       //   popup: path.resolve(SOURCE_FOLDER, 'popup.js'),
       options: path.resolve(SOURCE_FOLDER, './options/options.js'),
+      sidepanel: path.resolve(SOURCE_FOLDER, './sidepanel/sidepanel.js'),
       background: path.resolve(SOURCE_FOLDER, './background/background.js'),
       contentscript: path.resolve(SOURCE_FOLDER, './contentscript/contentscript.js'),
       inpage: path.resolve(SOURCE_FOLDER, './inpage/inpage.js')

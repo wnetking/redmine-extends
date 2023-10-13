@@ -1,7 +1,7 @@
 {
   "name": "Redmine Magic",
   "description": "Enhance your Redmine!",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "author": "Wnetking <wnetking1@gmail.com>",
   "manifest_version": 3,
   "background": {
@@ -11,6 +11,9 @@
     "128": "icon_128.png"
   },
   "options_page": "options.html",
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
   "action": {
     "default_title": "Redmine Magic"
   },
@@ -37,7 +40,9 @@
     ]
   },
   "permissions": [
-    "storage"
+    "storage",
+    "sidePanel",
+    "contextMenus"
   ],
   "web_accessible_resources": [
     {
