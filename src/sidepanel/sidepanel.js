@@ -5,12 +5,25 @@ import { API } from '../services/api';
 /**
  * @type {(request: Request) => Promise<Response>}
  */
-const sendMessage = async (request) => {
-  // @ts-ignore
-  const response = await chrome.runtime.sendMessage(request);
+const sendMessage = (request) => new Promise((resolve, reject) => {
+  var port = chrome.runtime.connect({ name: "main-port" });
+  port.postMessage(request);
 
-  return response;
-};
+  port.onMessage.addListener(
+    /**
+     * @param {Response} response
+     */
+    (response) => {
+      if (request.id === response.id) {
+        if(response.error) {
+          reject(response)
+        } else {
+          resolve(response);
+        }
+      }
+    }
+  );
+});
 
 const api = new API(sendMessage);
               
