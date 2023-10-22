@@ -8,7 +8,7 @@ module.exports = () => {
 
   return {
     mode,
-    devtool: 'inline-source-map',
+    devtool: mode === 'development' ? 'inline-source-map' : undefined,
     entry: {
       //   popup: path.resolve(SOURCE_FOLDER, 'popup.js'),
       options: path.resolve(SOURCE_FOLDER, './options/options.js'),

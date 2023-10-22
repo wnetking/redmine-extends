@@ -7,71 +7,74 @@ import controllers from './controllers';
 import { Request, Response } from '../types';
 
 const DEV_MODE = process.env.NODE_ENV !== 'production';
+const appInstance = new App();
 
 (async () => {
   const initState = await loadState();
-  const app = new App();
   const store = observable.object(new Store(initState));
 
   controllers.forEach(Controller => {
     const controller = new Controller(store);
 
-    app.addApi(controller.api);
+    appInstance.addApi(controller.api);
   });
 
+  appInstance.controllersAdded = true;
+
   if (DEV_MODE) {
-    global.app = app;
+    global.app = appInstance;
   }
 
   reaction(() => toJS(store), saveState);
-
-  chrome.runtime.onConnect.addListener((port) => {
-    port.onMessage.addListener(
-      /**
-      * @param {Request} request 
-      */
-      (request) => {
-        (async () => {
-          const { method, params, id } = request;
-
-          try {
-            const appMethod = app.api[method];
-
-            if (appMethod) {
-              /**
-               * @type {Response} 
-               */
-              const result = await appMethod(params);
-
-              port.postMessage({
-                id,
-                result,
-              });
-            } else {
-              port.postMessage({
-                id,
-                error: {
-                  code: 'METHOD_NOT_FOUND',
-                },
-              });
-            }
-          } catch (err) {
-            port.postMessage(
-              /**
-               * @type {Response} 
-               */
-              {
-                id,
-                error: {
-                  code: 'METHOD_NOT_FOUND',
-                },
-              }
-            );
-          }
-        })();
-      });
-  });
 })();
+
+chrome.runtime.onConnect.addListener((port) => {
+  port.onMessage.addListener(
+    /**
+    * @param {Request} request 
+    */
+    (request) => {
+      (async () => {
+        const { method, params, id } = request;
+
+        try {
+          const app = await appInstance.getApi();
+          const appMethod = app.api[method];
+
+          if (appMethod) {
+            /**
+             * @type {Response} 
+             */
+            const result = await appMethod(params);
+
+            port.postMessage({
+              id,
+              result,
+            });
+          } else {
+            port.postMessage({
+              id,
+              error: {
+                code: 'METHOD_NOT_FOUND',
+              },
+            });
+          }
+        } catch (err) {
+          port.postMessage(
+            /**
+             * @type {Response} 
+             */
+            {
+              id,
+              error: {
+                code: 'METHOD_NOT_FOUND',
+              },
+            }
+          );
+        }
+      })();
+    });
+});
 
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({

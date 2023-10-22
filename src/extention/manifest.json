@@ -1,7 +1,7 @@
 {
   "name": "Redmine Magic",
   "description": "Enhance your Redmine!",
-  "version": "1.6.0",
+  "version": "1.9.1",
   "author": "Wnetking <wnetking1@gmail.com>",
   "manifest_version": 3,
   "background": {
@@ -29,14 +29,12 @@
       "css": [
         "css/main.css"
       ],
-      "run_at": "document_start",
-      "all_frames": true
+      "run_at": "document_idle"
     }
   ],
   "externally_connectable": {
     "matches": [
-      "https://redmine.netpeak.net/*",
-      "https://redmine.serpstat.com/*"
+      "*://redmine.serpstat.com/*"
     ]
   },
   "permissions": [
@@ -48,7 +46,6 @@
     {
       "resources": [
         "inpage.js",
-        "inject.css",
         "contentscript.js"
       ],
       "matches": [

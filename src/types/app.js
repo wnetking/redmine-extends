@@ -1,15 +1,15 @@
 /**
- * @typedef {
- *  'getSettings' |
- *  'toggleStoreValue' |
- *  'setValue' | 
- *  'toggleStoreValue' | 
- *  'updateItemMenu' | 
+ * @typedef {(
+ *  'getSettings'|
+ *  'toggleStoreValue'|
+ *  'setValue'| 
+ *  'toggleStoreValue'| 
+ *  'updateItemMenu'| 
  *  'addItemMenu'
- * } Method
+ * )} Method
  */
 
 /**
  * @type {Method}
  */
-export const Method = '';
+export const Method = null;

@@ -11,7 +11,7 @@ const script = document
 const settingsJSON = script ?
   script.getAttribute('data-settings') : null;
 
-async function setupInpageApi() {
+function setupInpageApi() {
   const settings = JSON.parse(settingsJSON || '{}');
   const modifier = new PageModifier(settings);
 
@@ -30,6 +30,9 @@ async function setupInpageApi() {
   modifier.run();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  setupInpageApi().catch(console.error);
-});
+try {
+  setupInpageApi();
+
+} catch (err) {
+  console.error(err);
+}

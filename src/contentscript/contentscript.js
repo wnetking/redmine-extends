@@ -1,12 +1,12 @@
 import { Request, Response } from '../types';
 import { API } from '../services/api';
 
+const port = chrome.runtime.connect({ name: "main-port" });
+
 /**
  * @type {(request: Request) => Promise<Response>}
  */
 const sendMessage = (request) => new Promise((resolve, reject) => {
-  var port = chrome.runtime.connect({ name: "main-port" });
-  port.postMessage(request);
 
   port.onMessage.addListener(
     /**
@@ -14,7 +14,7 @@ const sendMessage = (request) => new Promise((resolve, reject) => {
      */
     (response) => {
       if (request.id === response.id) {
-        if(response.error) {
+        if (response.error) {
           reject(response)
         } else {
           resolve(response);
@@ -22,6 +22,12 @@ const sendMessage = (request) => new Promise((resolve, reject) => {
       }
     }
   );
+
+  port.onDisconnect.addListener(function (event) {
+    console.log('onDisconnect', event);
+  });
+
+  port.postMessage(request);
 });
 
 const api = new API(sendMessage);
@@ -32,6 +38,7 @@ const isAnable = hosts.includes(document.location.hostname);
 if (isAnable) {
   (async () => {
     try {
+      console.log('Injection Begin');
       const {
         result: settings
       } = await api.fetch({ method: 'getSettings' });
@@ -42,6 +49,10 @@ if (isAnable) {
       script.setAttribute('data-settings', JSON.stringify(settings));
       const container = document.head || document.documentElement;
       container.insertBefore(script, container.children[0]);
+
+      console.log('Injection okey');
+
+      document.body.classList.add('magic-injection-success');
     } catch (e) {
       console.error('Injection failed.', e);
     }
