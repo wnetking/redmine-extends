@@ -38,9 +38,10 @@ export default function Switchees({
               color="primary"
               onChange={handleChange('anableLayoutMove')}
               value="anableLayoutMove"
+              size="small"
             />
           }
-          label="Move page layout"
+          label="Move page layout in issue page"
         />
         <FormControlLabel
           control={
@@ -49,9 +50,10 @@ export default function Switchees({
               onChange={handleChange('enablePhotoHandler')}
               value="enablePhotoHandler"
               color="primary"
+              size="small"
             />
           }
-          label="Images and Video in modal"
+          label="Images and Video in modal window"
         />
       </FormGroup>
       <FormHelperText>

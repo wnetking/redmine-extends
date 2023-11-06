@@ -20,7 +20,29 @@ Feature:
 4. Click `Load unpacked`
 5. Select folder with files from unzipped file
 
+## Files
 
-## Extention data flow
+```
+├── /src/                       # 
+│   ├── /background/            # background service worker files
+│   ├── /contentscript/         # contentscript files
+│   ├── /extention/             # manifest, icons
+│   ├── /inpage/                # inject inpage script
+│   ├── /options/               # options page files
+│   ├── /popup/                 # popup files
+│   ├── /services/              # app services
+│   ├── /sidepanel/             # sidepanel files
+│   ├── /types/                 # JSDocs type aliases
+│   ├── /utils/                 # 
+```
+
+## Contributions info
+
+For contribution you can:
+
+- Add feature request use template `New feature`
+- Make pull request with new feature and description
+
+### Extention data flow
 
 ![https://www.freecodecamp.org/news/content/images/2021/02/flowchart.png](https://www.freecodecamp.org/news/content/images/2021/02/flowchart.png)

@@ -1,0 +1,27 @@
+name: Feature request
+description: File a feature request
+title: "[New feature]: "
+labels: ["feature"]
+projects: ["wnetking/redmine-extends"]
+assignees:
+  - wnetking
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to add a new feature request!
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Please, describe you feature. 
+      placeholder: ""
+      value: ""
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      render: shell

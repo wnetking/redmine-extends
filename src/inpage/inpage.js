@@ -31,8 +31,15 @@ function setupInpageApi() {
 }
 
 try {
-  setupInpageApi();
-
+  if(['interactive', 'complete'].includes(document.readyState)) {
+    setupInpageApi();
+    console.log(`In page script init on document.readyState=${document.readyState}`);
+  } else {
+    document.addEventListener("DOMContentLoaded", function(){
+      setupInpageApi();
+      console.log(`In page script init on DOMContentLoaded`);
+    });
+  }
 } catch (err) {
   console.error(err);
 }

@@ -52,7 +52,7 @@ if (isAnable) {
 
       console.log('Injection okey');
 
-      document.body.classList.add('magic-injection-success');
+      // document.body.classList.add('magic-injection-success');
     } catch (e) {
       console.error('Injection failed.', e);
     }

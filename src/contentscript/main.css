@@ -30,22 +30,16 @@ img {
   border-left: 1px solid #ddd
 }
 
+.left-side-content .next-prev-links  {
+ display: none;
+}
+
 div#issue-changesets{
   width: 100%;  
 }
 
 html>body #content {
     min-height: 100vh;
-}
-
-.controller-issues #update {
-  position: absolute;
-  overflow-y: auto;
-  width: 100%;
-  max-height: 100%;
-  top: 0;
-  background: white;
-  bottom: 0;
 }
 
 #photo-handler-wrap {
