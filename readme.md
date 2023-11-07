@@ -40,7 +40,7 @@ Feature:
 
 For contribution you can:
 
-- Add feature request use template `New feature`
+- Add feature request use template `[New feature](https://github.com/wnetking/redmine-extends/issues/new?assignees=wnetking&labels=feature&projects=wnetking%2Fredmine-extends&template=feature-request.yaml&title=%5BNew+feature%5D%3A+)`
 - Make pull request with new feature and description
 
 ### Extention data flow
