@@ -15,8 +15,6 @@ body:
     attributes:
       label: Description
       description: Please, describe you feature. 
-      placeholder: ""
-      value: ""
     validations:
       required: true
   - type: textarea
