@@ -7,6 +7,8 @@ Feature:
 - [x] Moving the layout of the task page (Issue).   
 - [x] Photos and videos in a modal window without opening a new tab.   
 - [x] Additional menu items in the header.   
+- [x] All feature has enable\disable setting in settings page
+- [x] Render settings in browser side panel
 
 ## Install from store
 
@@ -43,7 +45,7 @@ For contribution you can:
 - Add feature request issue use template [New feature](https://github.com/wnetking/redmine-extends/issues/new?assignees=wnetking&labels=feature&projects=wnetking%2Fredmine-extends&template=feature-request.yaml&title=%5BNew+feature%5D%3A+)
 - Make pull request with new feature and description. Requirements:
   - All code need to be typed with JSDoc comments
-  - Feature need have anable\disable setting in settings page
+  - Feature need have enable\disable setting in settings page
 
 ## Extention data flow
 
