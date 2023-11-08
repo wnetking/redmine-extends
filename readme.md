@@ -40,9 +40,13 @@ Feature:
 
 For contribution you can:
 
-- Add feature request use template [New feature](https://github.com/wnetking/redmine-extends/issues/new?assignees=wnetking&labels=feature&projects=wnetking%2Fredmine-extends&template=feature-request.yaml&title=%5BNew+feature%5D%3A+)
-- Make pull request with new feature and description
+- Add feature request issue use template [New feature](https://github.com/wnetking/redmine-extends/issues/new?assignees=wnetking&labels=feature&projects=wnetking%2Fredmine-extends&template=feature-request.yaml&title=%5BNew+feature%5D%3A+)
+- Make pull request with new feature and description. Requirements:
+  - All code need to be typed with JSDoc comments
+  - Feature need have anable\disable setting in settings page
 
-### Extention data flow
+## Extention data flow
 
 ![https://www.freecodecamp.org/news/content/images/2021/02/flowchart.png](https://www.freecodecamp.org/news/content/images/2021/02/flowchart.png)
+
+
