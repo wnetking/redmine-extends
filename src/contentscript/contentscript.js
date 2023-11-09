@@ -31,9 +31,7 @@ const sendMessage = (request) => new Promise((resolve, reject) => {
 });
 
 const api = new API(sendMessage);
-
-const hosts = ['redmine.netpeak.net', 'redmine.serpstat.com'];
-const isAnable = hosts.includes(document.location.hostname);
+const isAnable = document.location.hostname.includes('redmine');
 
 if (isAnable) {
   (async () => {
@@ -51,8 +49,6 @@ if (isAnable) {
       container.insertBefore(script, container.children[0]);
 
       console.log('Injection okey');
-
-      // document.body.classList.add('magic-injection-success');
     } catch (e) {
       console.error('Injection failed.', e);
     }
